@@ -10,5 +10,17 @@
     <string name="email_professor">Email do Professor</string>
     <string name="telefone_professor">Telefone professor</string>
     <string name="salvar">Salvar</string>
+    <string name="title_activity_materia">MateriaActivity</string>
+    <string name="hello_materia">Cadastrar Materia</string>
+    <string name="text_professor">Professor:</string>
+    <string name="text_materia">Descricao</string>
+    <string name="professores_prompt">Professores</string>
+
+    <string-array name="professores_array">
+        <item>Daniel</item>
+        <item>Thiagos</item>
+        <item>Diego</item>
+        <item>Rogério</item>
+    </string-array>
 
 </resources>

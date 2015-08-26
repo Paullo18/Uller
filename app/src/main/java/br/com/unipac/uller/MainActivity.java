@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,7 +22,9 @@ import br.com.unipac.uller.model.domain.TipoAtividade;
 
 
 public class MainActivity extends ActionBarActivity {
-    Button btnProfessor;
+    Button btnProfessor, btnMateria;
+    ListView listaAtiviades;
+    private ArrayAdapter<Atividade> mAdaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,11 @@ public class MainActivity extends ActionBarActivity {
 
         btnProfessor = (Button) findViewById(R.id.btnProfessor);
 
-        TextView listaAtiviades = (TextView) findViewById(R.id.listaAtiviades);
+        btnMateria = (Button) findViewById(R.id.btnMateria);
+
+        listaAtiviades = (ListView) findViewById(R.id.listaAtiviades);
+
+        TextView listatxtAtiviades = (TextView) findViewById(R.id.listaTextAtiviades);
 
         List<Atividade> atividades = new ArrayList<>();
 
@@ -66,14 +74,26 @@ public class MainActivity extends ActionBarActivity {
 
         atividades.add(atividade3);
 
+        mAdaptador = new ArrayAdapter<Atividade>(this,android.R.layout.simple_list_item_1, atividades);
+
+        listaAtiviades.setAdapter(mAdaptador);
+
         for(Atividade at: atividades) {
-            listaAtiviades.setText("DEscricao" + at.getDescricao() + "\n" + "DataEntrega" + at.getDataEntrega());
+            listatxtAtiviades.setText("DEscricao" + at.getDescricao() + "\n" + "DataEntrega" + at.getDataEntrega());
         }
 
         btnProfessor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, ProfessorActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnMateria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, MateriaActivity.class);
                 startActivity(i);
             }
         });
